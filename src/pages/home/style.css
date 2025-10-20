@@ -1,0 +1,14 @@
+/* Reset total de margin/padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ocupa toda a altura da janela e remove espaços */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  background-color: #f9f9f9;
+  overflow-x: hidden;
+}
