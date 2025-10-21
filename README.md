@@ -138,6 +138,3 @@ cd webapp
 - **`OFERTAS`**: backend filtra por `promo IS TRUE`.
 
 ---
-
-## 📄 Licença
-Defina aqui a licença (ex.: MIT).
