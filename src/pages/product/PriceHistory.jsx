@@ -1,5 +1,3 @@
-// src/pages/product/PriceHistory.jsx
-
 import { useEffect, useMemo, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import {
@@ -17,7 +15,7 @@ export default function PriceHistory(){
   const [hist, setHist] = useState([]);
   const [error, setError] = useState('');
 
-  // Fallback: se vier um id "cru", derivamos o groupId a partir do produto inicial
+  // Fallback: se vier um id, derivamos o groupId a partir do produto inicial
   const gidParam = decodeURIComponent(gid || '');
   const effectiveGid =
     gidParam.startsWith('id:') || gidParam.startsWith('nm:')
