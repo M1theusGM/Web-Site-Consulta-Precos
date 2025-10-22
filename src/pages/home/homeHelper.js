@@ -1,11 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { prefetchAll, getPrefetched } from '../search/searchPrefetch.js';
 
-/**
- * .env.local (opcional)
- * VITE_SUGGESTION_LIMIT="15"
- * VITE_SEARCH_DEBOUNCE_MS="160"
- */
 const SUGGESTION_LIMIT = Number(import.meta.env.VITE_SUGGESTION_LIMIT || 15);
 const DEBOUNCE_MS = Number(import.meta.env.VITE_SEARCH_DEBOUNCE_MS || 160);
 const MIN_LEN = 2;
