@@ -1,5 +1,3 @@
-// src/pages/search/Results.jsx — promo só no Stock; Zaffari sem risco/percentual; logo abaixo do preço
-
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams, useNavigate, useLocation, Link } from 'react-router-dom';
 import {
