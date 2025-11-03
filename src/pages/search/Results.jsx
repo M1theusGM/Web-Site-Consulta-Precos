@@ -1,3 +1,5 @@
+// src/pages/search/Results.jsx — promo só no Stock; Zaffari sem risco/percentual; logo abaixo do preço
+
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams, useNavigate, useLocation, Link } from 'react-router-dom';
 import {
@@ -255,32 +257,7 @@ export default function Results() {
       </Typography>
 
       {/* GRID PRINCIPAL: sidebar + resultados */}
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '280px 1fr' }, gap: 2, alignItems: 'start' }}>
-        {/* Sidebar */}
-        <Paper elevation={1} sx={{ p: 2, position: { md: 'sticky' }, top: { md: 88 } }}>
-          <Typography variant="h6" sx={{ mb: 1 }}>Filtros</Typography>
-          <Typography variant="subtitle2" sx={{ mt: 1, mb: 1 }}>Departamentos</Typography>
-          <Divider sx={{ mb: 1 }} />
-          <Stack spacing={0.5} sx={{ maxHeight: 360, overflow: 'auto', pr: 1 }}>
-            {deptFacets.map(([dept, count]) => (
-              <Box key={dept} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <FormControlLabel
-                  control={<Checkbox size="small" checked={selectedDepts.has(dept)} onChange={() => toggleDept(dept)} />}
-                  label={dept}
-                />
-                <Chip size="small" label={count} />
-              </Box>
-            ))}
-            {!deptFacets.length && !loading && (
-              <Typography variant="body2" color="text.secondary">Sem categorias para esta busca.</Typography>
-            )}
-          </Stack>
-          <Divider sx={{ my: 2 }} />
-          <Button fullWidth variant="outlined" onClick={clearFilters} disabled={selectedDepts.size === 0}>
-            Limpar filtros
-          </Button>
-        </Paper>
-
+      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr', gap: 2, alignItems: 'start' }}>
         {/* Cards */}
         <Box>
           {loading && (
