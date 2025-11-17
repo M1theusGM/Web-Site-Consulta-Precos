@@ -8,7 +8,7 @@ const MAX_PAGES_FULL = Number(import.meta.env.VITE_MAX_PAGES_FULL || 2000);
 const strip = (s) => String(s ?? '').trim();
 const norm = (s) => strip(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
-// Normaliza string/array
+// Normaliza string/array/set para "v1,v2,v3" ordenado
 function normalizeMultiInput(v) {
   if (!v) return '';
   const arr = Array.isArray(v) || v instanceof Set ? Array.from(v) : String(v).split(',');
@@ -16,7 +16,7 @@ function normalizeMultiInput(v) {
   return out.length ? out.sort((a,b)=>a.localeCompare(b)).join(',') : '';
 }
 
-// helper de formatação BRL
+
 export const fmtBRL = (v) =>
   Number.isFinite(Number(v))
     ? Number(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -135,7 +135,7 @@ export function normalizeProduto(p){
   const preco_original = Number(p.preco_original ?? p.preco ?? p.preco_atual ?? p.price);
   const preco_promo    = Number(p.preco_promo ?? p.precoPromocional ?? p.preco_oferta);
 
-  // novo: campo tipo_promo vindo do backend (com fallback)
+  //campo tipo_promo vindo do backend
   const tipo_promo_raw = strip(p.tipo_promo || p.tipoPromo || p.promo_tipo || '');
   const tipo_promo_key = normalizePromoKey(tipo_promo_raw);
 
@@ -200,6 +200,7 @@ export function scoreProduct(prod, tokens, originalQuery) {
 
 // ===== Busca & cache =====
 const queryCache = new Map();
+// inclui dept/marca/origem/canon na chave
 const keyOf = (q, page, dept='', marca='', origem='', canon='') => {
   const toks = tokenize(q).join(' ') || '*';
   const d = normalizeMultiInput(dept);
@@ -298,7 +299,7 @@ export function groupKeyFor(p){
 }
 
 // --------------------------
-// HISTÓRICO 
+// HISTÓRICO — FAST endpoint
 // --------------------------
 const historyCache = new Map(); // cache por gid
 
@@ -325,7 +326,7 @@ export async function fetchHistoryByGroupId(groupId){
   return out;
 }
 
-/* --------- Fallback antigo --------- */
+
 const pageCache = new Map();
 async function fetchPage(page){
   if(pageCache.has(page)) return pageCache.get(page);

@@ -166,7 +166,6 @@ export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // < 600px
 
-  // Banners
   const banners = [
     { key: 'carnes',    canon: 'CARNES',    img: bannerCarnes,    alt: 'Seleção de Carnes',   pos: '10% 50%' },
     { key: 'ofertas',   canon: 'OFERTAS',   img: bannerOfertas,   alt: 'Ofertas',             pos: '30% 50%' },
@@ -177,10 +176,8 @@ export default function Home() {
   const H1 = { xs: 160, sm: 210, md: 240 };
   const H2 = { xs: 160, sm: 210, md: 240 };
 
-  // padding horizontal
   const CONTENT_PX = { xs: 2, sm: 4, md: 10 };
 
-  // carrossel mobile
   const carouselRef = React.useRef(null);
   const go = (dir) => {
     const node = carouselRef.current;
@@ -191,7 +188,7 @@ export default function Home() {
     node.scrollTo({ left: next * w, behavior: 'smooth' });
   };
 
-  // CATEGORIAS usa ?canon=
+  // CATEGORIAS (usa ?canon=)
   const categoriasMenu = [
     { label: SECTOR_LABEL.HORTIFRUTI,         canon: 'HORTIFRUTI' },
     { label: SECTOR_LABEL.FRIOS_LATICINIOS,   canon: 'FRIOS_LATICINIOS' },
@@ -203,7 +200,7 @@ export default function Home() {
     { label: SECTOR_LABEL.OFERTAS,            canon: 'OFERTAS' },
   ];
 
-  // Corredores
+  // Corredores (cards)
   const corredores = [
     { src: 'src/img/mercearia.png',  alt: 'Mercearia',          canon: 'MERCEARIA' },
     { src: 'src/img/bebidas.png',    alt: 'Bebidas',            canon: 'BEBIDAS' },
@@ -407,7 +404,6 @@ export default function Home() {
       {renderMobileMenu}
       {renderMenu}
 
-      {/* categorias */}
       <Box
         component="nav"
         sx={{

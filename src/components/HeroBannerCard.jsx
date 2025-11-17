@@ -1,3 +1,4 @@
+// src/components/HeroBannerCard.jsx
 import React from "react";
 import { Box, Typography, Button, CardActionArea } from "@mui/material";
 
@@ -9,8 +10,8 @@ export default function HeroBannerCard({
   buttonText,
   onClick,
   sx = {},
-  imgPosition = "50% 50%",   
-  imgSx = {},               
+  imgPosition = "50% 50%",   // 🔑 novo: controla o recorte (object-position)
+  imgSx = {},                // opcional: permite passar sx extra pra <img>
 }) {
   return (
     <CardActionArea
@@ -30,7 +31,7 @@ export default function HeroBannerCard({
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: imgPosition, 
+            objectPosition: imgPosition, // 👈 aqui
             display: "block",
             ...imgSx,
           }}
