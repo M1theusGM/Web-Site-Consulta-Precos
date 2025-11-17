@@ -1,9 +1,6 @@
-// src/pages/search/searchPrefetch.js (RÁPIDO p/ histórico + dept/marca/origem + canon)
-
 const API_BASE  = import.meta.env.VITE_API_BASE  || 'https://api-banco-mercados.onrender.com';
 export const PAGE_SIZE = Number(import.meta.env.VITE_PAGE_SIZE || 100);
 
-// Mantidos (compatibilidade / fallback)
 const CONCURRENCY = Number(import.meta.env.VITE_API_CONCURRENCY || 24);
 const MAX_PAGES_FULL = Number(import.meta.env.VITE_MAX_PAGES_FULL || 2000);
 
@@ -11,7 +8,7 @@ const MAX_PAGES_FULL = Number(import.meta.env.VITE_MAX_PAGES_FULL || 2000);
 const strip = (s) => String(s ?? '').trim();
 const norm = (s) => strip(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
-// Normaliza string/array/set para "v1,v2,v3" ordenado
+// Normaliza string/array
 function normalizeMultiInput(v) {
   if (!v) return '';
   const arr = Array.isArray(v) || v instanceof Set ? Array.from(v) : String(v).split(',');
@@ -19,7 +16,7 @@ function normalizeMultiInput(v) {
   return out.length ? out.sort((a,b)=>a.localeCompare(b)).join(',') : '';
 }
 
-// helper de formatação BRL (exportado)
+// helper de formatação BRL
 export const fmtBRL = (v) =>
   Number.isFinite(Number(v))
     ? Number(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -203,7 +200,6 @@ export function scoreProduct(prod, tokens, originalQuery) {
 
 // ===== Busca & cache =====
 const queryCache = new Map();
-// inclui dept/marca/origem/canon na chave
 const keyOf = (q, page, dept='', marca='', origem='', canon='') => {
   const toks = tokenize(q).join(' ') || '*';
   const d = normalizeMultiInput(dept);
@@ -302,7 +298,7 @@ export function groupKeyFor(p){
 }
 
 // --------------------------
-// HISTÓRICO — FAST endpoint
+// HISTÓRICO 
 // --------------------------
 const historyCache = new Map(); // cache por gid
 

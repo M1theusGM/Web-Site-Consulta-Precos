@@ -1,7 +1,3 @@
-// src/lib/sectorMap.js
-// Códigos canônicos -> lista de aliases/nomes equivalentes usados pelas redes
-// Cobertura dos 17 departamentos informados
-
 export const SECTOR_MAP = {
   LIMPEZA: [
     'Limpeza', 'Produtos de Limpeza', 'Material de Limpeza', 'Limpeza Doméstica'
@@ -61,7 +57,6 @@ export const SECTOR_LABEL = {
   CHURRASCO: 'CHURRASCO',
 };
 
-// Constrói “v1,v2,v3” com todos os aliases de um ou vários códigos canônicos
 export function buildDeptListFromCanon(canon) {
   const list = Array.isArray(canon)
     ? canon

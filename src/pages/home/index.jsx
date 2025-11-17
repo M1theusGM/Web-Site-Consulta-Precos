@@ -1,5 +1,3 @@
-// src/pages/home/index.jsx (SEM Grid do MUI — layout via Box + CSS Grid)
-
 import bannerCarnes from '../../img/carnes.png';
 import bannerOfertas from '../../img/ofertas.png';
 import bannerItens from '../../img/Itens.png';
@@ -28,8 +26,6 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import useHeaderLogic from './homeHelper';
 import HeroBannerCard from '../../components/HeroBannerCard';
 import BotoesSetores from '../../components/BotoesSetores';
-
-// rótulos bonitos dos códigos canônicos
 import { SECTOR_LABEL } from '../../lib/sectorMap';
 
 /* ====== estilos ====== */
@@ -82,7 +78,6 @@ export default function Home() {
     handleSelectSuggestion, handleKeyDown, onClickAway
   } = useHeaderLogic();
 
-  // pré-aquece a query
   React.useEffect(() => {
     const q = pesquisa.trim();
     if (q.length < 2) { setWarmKey(''); return; }
@@ -171,7 +166,7 @@ export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // < 600px
 
-  // Banners — usar canon quando possível (para combinar com backend restritivo)
+  // Banners
   const banners = [
     { key: 'carnes',    canon: 'CARNES',    img: bannerCarnes,    alt: 'Seleção de Carnes',   pos: '10% 50%' },
     { key: 'ofertas',   canon: 'OFERTAS',   img: bannerOfertas,   alt: 'Ofertas',             pos: '30% 50%' },
@@ -182,7 +177,7 @@ export default function Home() {
   const H1 = { xs: 160, sm: 210, md: 240 };
   const H2 = { xs: 160, sm: 210, md: 240 };
 
-  // mesmo padding horizontal
+  // padding horizontal
   const CONTENT_PX = { xs: 2, sm: 4, md: 10 };
 
   // carrossel mobile
@@ -196,7 +191,7 @@ export default function Home() {
     node.scrollTo({ left: next * w, behavior: 'smooth' });
   };
 
-  // CATEGORIAS (usa ?canon=)
+  // CATEGORIAS usa ?canon=
   const categoriasMenu = [
     { label: SECTOR_LABEL.HORTIFRUTI,         canon: 'HORTIFRUTI' },
     { label: SECTOR_LABEL.FRIOS_LATICINIOS,   canon: 'FRIOS_LATICINIOS' },
@@ -208,7 +203,7 @@ export default function Home() {
     { label: SECTOR_LABEL.OFERTAS,            canon: 'OFERTAS' },
   ];
 
-  // Corredores (cards)
+  // Corredores
   const corredores = [
     { src: 'src/img/mercearia.png',  alt: 'Mercearia',          canon: 'MERCEARIA' },
     { src: 'src/img/bebidas.png',    alt: 'Bebidas',            canon: 'BEBIDAS' },
@@ -412,7 +407,7 @@ export default function Home() {
       {renderMobileMenu}
       {renderMenu}
 
-      {/* categorias (menu verde) */}
+      {/* categorias */}
       <Box
         component="nav"
         sx={{
