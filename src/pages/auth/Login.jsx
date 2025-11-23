@@ -30,7 +30,7 @@ export default function Login() {
     setLoading(true);
     try {
       await login(email.trim(), password, remember);
-      navigate(from, { replace: true });
+      navigate("/home", { replace: true });
     } catch (err) {
       setError(err?.message || "Não foi possível entrar.");
     } finally {
