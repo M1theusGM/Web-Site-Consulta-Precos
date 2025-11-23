@@ -2,20 +2,26 @@ import bannerCarnes from '../../img/carnes.png';
 import bannerOfertas from '../../img/ofertas.png';
 import bannerItens from '../../img/Itens.png';
 import bannerChurrasco from '../../img/churrasco.png';
+
 import React from 'react';
 import { prefetchAll } from '../search/searchPrefetch.js';
+
 import {
   AppBar, Box, Toolbar, IconButton, Typography,
   InputBase, Badge, MenuItem, Menu,
   Paper, List, ListItemButton, ListItemAvatar, Avatar, ListItemText,
   Divider, CircularProgress, ClickAwayListener, Button
 } from '@mui/material';
+
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme, styled, alpha } from '@mui/material/styles';
+
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
 import { useNavigate, Link } from 'react-router-dom';
 import logo from '../../img/logo.png';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
@@ -27,6 +33,20 @@ import useHeaderLogic from './homeHelper';
 import HeroBannerCard from '../../components/HeroBannerCard';
 import BotoesSetores from '../../components/BotoesSetores';
 import { SECTOR_LABEL } from '../../lib/sectorMap';
+
+/* IMPORTAÇÕES CORRIDAS DOS BOTÕES */
+import imgMercearia from '../../img/mercearia.png';
+import imgBebidas from '../../img/bebidas.png';
+import imgCarnes2 from '../../img/carness.png';
+import imgPadaria from '../../img/padaria.png';
+import imgCongelados from '../../img/congelados.png';
+import imgFrios from '../../img/frios.png';
+import imgHortifruti from '../../img/hortifruti.png';
+import imgHigiene from '../../img/higiene.png';
+import imgLimpeza from '../../img/limpeza.png';
+import imgPets from '../../img/pets.png';
+import imgBazar from '../../img/bazar.png';
+import imgEletro from '../../img/eletro.png';
 
 /* ====== estilos ====== */
 const Search = styled('form')(({ theme }) => ({
@@ -201,20 +221,20 @@ export default function Home() {
   ];
 
   // Corredores (cards)
-  const corredores = [
-    { src: 'src/img/mercearia.png',  alt: 'Mercearia',          canon: 'MERCEARIA' },
-    { src: 'src/img/bebidas.png',    alt: 'Bebidas',            canon: 'BEBIDAS' },
-    { src: 'src/img/carness.png',    alt: 'Carnes',             canon: 'CARNES' },
-    { src: 'src/img/padaria.png',    alt: 'Padaria',            canon: 'PADARIA' },
-    { src: 'src/img/congelados.png', alt: 'Congelados',         canon: 'CONGELADOS' },
-    { src: 'src/img/frios.png',      alt: 'Frios e Laticínios', canon: 'FRIOS_LATICINIOS' },
-    { src: 'src/img/hortifruti.png', alt: 'Hortifruti',         canon: 'HORTIFRUTI' },
-    { src: 'src/img/higiene.png',    alt: 'Higiene e Beleza',   canon: 'HIGIENE_BELEZA' },
-    { src: 'src/img/limpeza.png',    alt: 'Limpeza',            canon: 'LIMPEZA' },
-    { src: 'src/img/pets.png',       alt: 'Pets',               canon: 'PETS' },
-    { src: 'src/img/bazar.png',      alt: 'Bazar',              canon: 'BAZAR' },
-    { src: 'src/img/eletro.png',     alt: 'Eletro',             canon: 'ELETRO' },
-  ];
+const corredores = [
+  { src: imgMercearia,  alt: 'Mercearia',          canon: 'MERCEARIA' },
+  { src: imgBebidas,    alt: 'Bebidas',            canon: 'BEBIDAS' },
+  { src: imgCarnes2,    alt: 'Carnes',             canon: 'CARNES' },
+  { src: imgPadaria,    alt: 'Padaria',            canon: 'PADARIA' },
+  { src: imgCongelados, alt: 'Congelados',         canon: 'CONGELADOS' },
+  { src: imgFrios,      alt: 'Frios e Laticínios', canon: 'FRIOS_LATICINIOS' },
+  { src: imgHortifruti, alt: 'Hortifruti',         canon: 'HORTIFRUTI' },
+  { src: imgHigiene,    alt: 'Higiene e Beleza',   canon: 'HIGIENE_BELEZA' },
+  { src: imgLimpeza,    alt: 'Limpeza',            canon: 'LIMPEZA' },
+  { src: imgPets,       alt: 'Pets',               canon: 'PETS' },
+  { src: imgBazar,      alt: 'Bazar',              canon: 'BAZAR' },
+  { src: imgEletro,     alt: 'Eletro',             canon: 'ELETRO' },
+];
 
   return (
     <Box sx={{ flexGrow: 1, minHeight: '100vh', backgroundColor: '#f9f9f9', m: 0, p: 0 }}>
